@@ -1,0 +1,188 @@
+:root{
+    --color-primary: #7abcf3;
+    --color-primary2: #5a34c2;
+    --pink: #ff3447;
+    --success: #31d059;
+    --danger: #fd443b;
+    --warning: #fae529;
+    --info: #3190d0;
+    --black: #000;
+    --white: #fff;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: var(--color-primary);
+    background: linear-gradient(130deg,var(--color-primary) 0%, var(--color-primary2) 50%, var(--pink) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alerte{
+    padding: 20px;
+    background: var(--white);
+    cursor: pointer;
+}
+
+.dynamic-island-alert{
+    position: fixed;
+    background: var(--black);
+    width: 90px;
+    height: 25px;
+    border-radius: 25px;
+    transition: .5s ease-in-out;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+}
+.show{
+    display: flex;
+}
+.full{
+    width: 200px;
+    height: 25px;
+    transition: .5s;
+}
+.active{
+    width: 200px;
+    height: 60px;
+}
+
+.success .action-status::after{
+    content: "\f00c";
+    font-family: FontAwesome;
+    color: var(--success);
+}
+.info .action-status::after{
+    content: "\21";
+    font-family: FontAwesome;
+    color: var(--info);
+}
+.warning .action-status::after{
+    content: "\21";
+    font-family: FontAwesome;
+    color: var(--warning);
+}
+.danger .action-status::after{
+    content: "\f00d";
+    font-family: FontAwesome;
+    color: var(--danger);
+}
+
+.active.success .detail-status::after{
+    content: "\f00c";
+    font-family: FontAwesome;
+    color: var(--success);
+}
+.active.info .detail-status::after{
+    content: "\21";
+    font-family: FontAwesome;
+    color: var(--info);
+}
+.active.warning .detail-status::after{
+    content: "\21";
+    font-family: FontAwesome;
+    color: var(--warning);
+}
+.active.danger .detail-status::after{
+    content: "\f00d";
+    font-family: FontAwesome;
+    color: var(--danger);
+}
+
+.content{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+.detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+}
+.detail p{
+    color: var(--white);
+    font-size: 0.6em;
+    cursor: default;
+    transition: .5s;
+    line-height: 13px;
+    opacity: 0;
+    visibility: hidden;
+}
+.action{
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    transition: .5s;
+}
+
+.full .detail p{
+    opacity: 1;
+    visibility: visible;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 130px;
+}
+.active .detail p{
+    opacity: 1;
+    visibility: visible;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+    width: auto;
+}
+.full .action{
+    opacity: 1;
+    visibility: visible;
+}
+.full .action .action-btn{
+    display: none;
+}
+.active .action i{
+    display: none;
+}
+.active .action .action-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.action-btn span{
+    width: 25px;
+    height: 25px;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.action-btn span.reject{
+    background: var(--danger);
+}
+.action-btn span.accept{
+    background: var(--success);
+}
